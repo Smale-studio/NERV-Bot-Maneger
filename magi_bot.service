@@ -1,0 +1,17 @@
+[Unit]
+Description=MAGI NERV Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/magi_bot
+EnvironmentFile=/root/magi_bot/.env
+ExecStart=/root/magi_bot/venv/bin/python bot.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
