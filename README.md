@@ -1,26 +1,26 @@
-# 🔵 MAGI Bot — Система NERV
+# MAGI Bot — Система NERV
 
 Telegram-бот на базе трёх суперкомпьютеров MAGI из Евангелиона.  
-Работает через OpenRouter (DeepSeek + Qwen-VL). Запускается как systemd-сервис на Ubuntu.
+Работает через OpenRouter (DeepSeek + Gemma4-26B-A4B). Запускается как systemd-сервис на Ubuntu.
 
 ---
 
-## ⚡ Установка на VPS (Ubuntu 24.04)
+## Установка на VPS (Ubuntu 24.04)
 
-### 1. Загрузи файлы на сервер
+### 1. Загрузка файлов на сервер или ваш личный компьютер через терминал
 
 ```bash
 scp -r magi_bot/ root@ВАШ_IP:/root/
 ```
 
-### 2. Подключись к серверу и перейди в папку
+### 2. Подключиение к серверу и перейдите в папку
 
 ```bash
 ssh root@ВАШ_IP
 cd /root/magi_bot
 ```
 
-### 3. Создай виртуальное окружение и установи зависимости
+### 3. Создайте виртуальное окружение и установите зависимости
 
 ```bash
 python3 -m venv venv
@@ -28,19 +28,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Создай .env файл с твоими данными
+### 4. Создай .env файл с вашими данными
 
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-Заполни три значения:
+Заполните три значения:
 - `TELEGRAM_TOKEN` — токен от @BotFather
-- `OPENROUTER_API_KEY` — ключ с openrouter.ai
-- `ADMIN_ID` — твой Telegram ID (узнать у @userinfobot)
+- `OPENROUTER_API_KEY` — ключ с openrouter.ai 
+- `ADMIN_ID` — ваш Telegram ID для обозначения вашего личного айди профиля (узнать у @userinfobot)
 
-### 5. Проверь что бот запускается
+### 5. Проверка что бот запускается
 
 ```bash
 source venv/bin/activate
@@ -49,7 +49,7 @@ python bot.py
 
 Если всё ок — Ctrl+C и идём дальше.
 
-### 6. Установи systemd сервис
+### 6. Установите systemd сервис
 
 ```bash
 cp magi_bot.service /etc/systemd/system/
@@ -58,7 +58,7 @@ systemctl enable magi_bot
 systemctl start magi_bot
 ```
 
-### 7. Проверь статус
+### 7. Проверьте статус
 
 ```bash
 systemctl status magi_bot
